@@ -10,6 +10,7 @@ st.dataframe(df)
 coluna1 = list(df['class'].unique())
 coluna1.append('Todas')
 colunas1 = st.selectbox('Selecione o class', options = coluna1)
+df.columns()
 
 
 
