@@ -2,22 +2,19 @@ import streamlit as st
 import pandas as pd 
 import plotly.express as px
 
-df = pd.read_csv('https://www.openml.org/data/get_csv/1586225/php0iVrYT')
-df.rename(columns = {'V1':'Recency','V2':'Frequency','V3':'Monetary','V4':'Time','Class':'Target'}, inplace=True)
+df = pd.read_csv('https://www.openml.org/data/get_csv/61/dataset_61_iris.arff')
 st.title('Ana Elisa Braz - Avaliação 2 - Módulo 2')
 st.write('Base Filtrada')
 st.dataframe(df)
-df.astype({"Target":"float64"})
-target = list(df['Target'].unique())
-#df['Target'].astype(float)
-target.append('Todas')
-targets = st.selectbox('Selecione o Target', options = target)
+coluna1 = list(df['Target'].unique())
+coluna1.append('Todas')
+colunas1 = st.selectbox('Selecione o Target', options = coluna1)
 # Função que mostra a quantidade de linhas 
 def mostra_qntd_linhas(df):
     qntd_linhas = st.slider('Selecione a quantidade de linhas que deseja mostrar na tabela',min_value = 1, max_value = len(df), step =1)
     st.write(df.head(qntd_linhas).style.format(subset = ['Target'], formatter = "{:.2f}"))
 
-if target !='Todas':
+if coluna1 !='Todas':
     df = df.query('Target == @target')
     mostra_qntd_linhas(df)
 else:
@@ -27,9 +24,9 @@ else:
 st.title('Visualização Gráfica')
 st.write(' ')
 quantidade = df.groupby(['Target']).Target.count().sort_values()
-target1 = df['Target'].unique()
+coluna1 = df['Target'].unique()
 
-fig = px.bar(x=quantidade, y = target1, orientation = 'h', title = 'Gráfico de quantidade de Target', labels = {'x':'Quantidade','y':'Target'})
+fig = px.bar(x=quantidade, y = coluna1, orientation = 'h', title = 'Gráfico de quantidade de Target', labels = {'x':'Quantidade','y':'Target'})
 st.plotly_chart(fig)
 
 
