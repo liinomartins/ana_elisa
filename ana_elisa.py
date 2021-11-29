@@ -26,7 +26,7 @@ else:
 # Visualizações Gráficas
 st.title('Visualização Gráfica')
 st.write(' ')
-quantidade = df.groupby(['Class']).class.count().sort_values()
+quantidade = df.groupby(['class']).class.count().sort_values()
 coluna1 = df['class'].unique()
 
 fig = px.bar(x=quantidade, y = coluna1, orientation = 'h', title = 'Gráfico de quantidade de Class', labels = {'x':'Quantidade','y':'Class'})
