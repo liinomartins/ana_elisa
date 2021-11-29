@@ -7,6 +7,7 @@ df.rename(columns = {'V1':'Recency','V2':'Frequency','V3':'Monetary','V4':'Time'
 st.title('Ana Elisa Braz - Avaliação 2 - Módulo 2')
 st.write('Base Filtrada')
 st.dataframe(df)
+st.write(df.dtypes)
 df['Target'].astype(str)
 target = list(df['Target'].unique())
 target.append('Todas')
