@@ -11,16 +11,6 @@ coluna1 = list(df['class'].unique())
 coluna1.append('Todas')
 colunas1 = st.selectbox('Selecione o class', options = coluna1)
 
-# Função que mostra a quantidade de linhas 
-def mostra_qntd_linhas(df):
-    qntd_linhas = st.slider('Selecione a quantidade de linhas que deseja mostrar na tabela',min_value = 1, max_value = len(df), step =1)
-    st.write(df.head(qntd_linhas).style.format(subset = ['class'], formatter = "{:.2f}"))
-
-if coluna1 !='Todas':
-    df = df.query('class == @class')
-    mostra_qntd_linhas(df)
-else:
-    mostra_qntd_linhas(df)
 
 
 # Visualizações Gráficas
