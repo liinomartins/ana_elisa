@@ -10,14 +10,12 @@ st.dataframe(df)
 coluna1 = list(df['class'].unique())
 coluna1.append('Todas')
 colunas1 = st.selectbox('Selecione o class', options = coluna1)
-df.columns()
-
 
 
 # Visualizações Gráficas
 st.title('Visualização Gráfica')
 st.write(' ')
-quantidade = df.groupby(['class']).class.count().sort_values()
+quantidade = df.groupby(['class']).count().sort_values()
 coluna1 = df['class'].unique()
 
 fig = px.bar(x=quantidade, y = coluna1, orientation = 'h', title = 'Gráfico de quantidade de Class', labels = {'x':'Quantidade','y':'Class'})
