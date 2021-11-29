@@ -26,8 +26,9 @@ else:
 st.title('Visualização Gráfica')
 st.write(' ')
 quantidade = df.grouby(['Target']).Target.count().sort_values()
+target1 = df['Target'].unique()
 
-fig = px.bar(x=quantidade, y = target, orientation = 'h', title = 'Nome do Gráfico', labels = {'x':'Quantidade','y':'Target'})
+fig = px.bar(x=quantidade, y = target1, orientation = 'h', title = 'Nome do Gráfico', labels = {'x':'Quantidade','y':'Target'})
 st.pyplot_chart(fig)
 
 
