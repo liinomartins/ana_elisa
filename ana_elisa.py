@@ -9,7 +9,7 @@ st.dataframe(df)
 df.rename(columns = {'class':'Class'}, inplace=True)
 clase = list(df['Class'].unique())
 clase.append('Todas')
-class1 = st.selectbox('Selecione o class', options = coluna1)
+class1 = st.selectbox('Selecione o class', options = classe)
 
 # Função que mostra a quantidade de linhas 
 def mostra_qntd_linhas(df):
