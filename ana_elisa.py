@@ -16,7 +16,7 @@ def mostra_qntd_linhas(df):
     qntd_linhas = st.slider('Selecione a quantidade de linhas que deseja mostrar na tabela',min_value = 1, max_value = len(df), step =1)
     st.write(df.head(qntd_linhas).style.format(subset = ['Target'], formatter = "{:.2f}"))
 
-if target !='1':
+if target !='Todas':
     df = df.query('Target == @target')
     mostra_qntd_linhas(df)
 else:
