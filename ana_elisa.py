@@ -7,9 +7,10 @@ df.rename(columns = {'V1':'Recency','V2':'Frequency','V3':'Monetary','V4':'Time'
 st.title('Ana Elisa Braz - Avaliação 2 - Módulo 2')
 st.write('Base Filtrada')
 st.dataframe(df)
+df['Target'].astype(str)
 target = list(df['Target'].unique())
 target.append('Todas')
-targets = st.selectbox('Selecione o Target', [1.00,2.00])
+targets = st.selectbox('Selecione o Target', options = target)
 # Função que mostra a quantidade de linhas 
 def mostra_qntd_linhas(df):
     qntd_linhas = st.slider('Selecione a quantidade de linhas que deseja mostrar na tabela',min_value = 1, max_value = len(df), step =1)
