@@ -11,18 +11,28 @@ coluna1 = list(df['Class'].unique())
 coluna1.append('Todas')
 colunas1 = st.selectbox('Selecione o class', options = coluna1)
 
+# Função que mostra a quantidade de linhas 
+def mostra_qntd_linhas(df):
+    qntd_linhas = st.slider('Selecione a quantidade de linhas que deseja mostrar na tabela',min_value = 1, max_value = len(df), step =1)
+    st.write(df.head(qntd_linhas).style.format(subset = ['Class'], formatter = "{:.2f}"))
 
+if coluna1 !='Todas':
+    df = df.query('Class == @class')
+    mostra_qntd_linhas(df)
+else:
+    mostra_qntd_linhas(df)
+quantidade = df.groupby(['class']).class.count().sort_values()
 
 
 # Visualizações Gráficas
 st.title('Visualização Gráfica')
 st.write(' ')
-quantidade = df.groupby(['Class']).Class.count().sort_values()
 coluna1 = df['Class'].unique()
 
-fig = px.bar(x=quantidade, y = coluna1, orientation = 'h', title = 'Gráfico de quantidade de Class', labels = {'x':'Quantidade','y':'Class'})
-st.plotly_chart(fig)
-
+box_x = st.selectbox('Variáveis do Blox Plot', options = df.columns, index = df.columns.get_loc('sepallength'))
+box_cat = st.selectbox('Variáveis Categóricas', options = df.columns)
+box_fig = px.box(df, x = box_cat, y = box_x, title = 'Box Plot do ' + box_cat, template = 'plotly_white', category_orders = coluna1)
+st.write(box_fig)
 
 
 # Download da tabela filtrada
