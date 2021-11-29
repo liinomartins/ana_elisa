@@ -7,16 +7,16 @@ df.rename(columns = {'V1':'Recency','V2':'Frequency','V3':'Monetary','V4':'Time'
 st.title('Ana Elisa Braz - Avaliação 2 - Módulo 2')
 st.write('Base Filtrada')
 st.dataframe(df)
-recency = list(df['Recency'].unique())
-#recency.append('Todas')
-recencys = st.selectbox('Selecione o Target', options = recency)
+target = list(df['Target'].unique())
+target.append('Todas')
+targets = st.selectbox('Selecione o Target', options = target)
 # Função que mostra a quantidade de linhas 
 def mostra_qntd_linhas(df):
     qntd_linhas = st.slider('Selecione a quantidade de linhas que deseja mostrar na tabela',min_value = 1, max_value = len(df), step =1)
-    st.write(df.head(qntd_linhas).style.format(subset = ['Recency'], formatter = "{:.2f}"))
+    st.write(df.head(qntd_linhas).style.format(subset = ['Target'], formatter = "{:.2f}"))
 
-if recency !='Todas':
-    df = df.query('Recency == @recency')
+if target !='Todas':
+    df = df.query('Target == @target')
     mostra_qntd_linhas(df)
 else:
     mostra_qntd_linhas(df)
@@ -24,10 +24,10 @@ else:
 # Visualizações Gráficas
 st.title('Visualização Gráfica')
 st.write(' ')
-quantidade = df.groupby(['Recency']).Recency.count().sort_values()
-recency1 = df['Recency'].unique()
+quantidade = df.groupby(['Target']).Target.count().sort_values()
+target1 = df['Target'].unique()
 
-fig = px.bar(x=quantidade, y = Recency1, orientation = 'h', title = 'Gráfico de quantidade de Recency', labels = {'x':'Quantidade','y':'Recency'})
+fig = px.bar(x=quantidade, y = target1, orientation = 'h', title = 'Gráfico de quantidade de Target', labels = {'x':'Quantidade','y':'Target'})
 st.plotly_chart(fig)
 
 
