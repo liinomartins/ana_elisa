@@ -2,8 +2,7 @@ import streamlit as st
 import pandas as pd 
 import plotly.express as px
 
-
-df = pd.read_csv('/Users/linomartins/Downloads/php0iVrYT.csv', sep = ',', encoding = 'utf-8')
+df = pd.read_csv('https://www.openml.org/data/get_csv/1586225/php0iVrYT')
 df.rename(columns = {'V1':'Recency','V2':'Frequency','V3':'Monetary','V4':'Time','Class':'Target'}, inplace=True)
 st.title('Ana elisa teste da aplicacao')
 st.write('filtro e download do treco')
