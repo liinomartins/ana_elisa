@@ -16,14 +16,12 @@ def mostra_qntd_linhas(df):
     qntd_linhas = st.slider('Selecione a quantidade de linhas que deseja mostrar na tabela',min_value = 1, max_value = len(df), step =1)
     st.write(df.head(qntd_linhas).style.format(subset = ['Class'], formatter = "{:.2f}"))
 
-if classe !='Todas':
-    df = df.query('Class == @classe')
+if classe1 !='Todas':
+    df = df.query('Class == @classe1')
     mostra_qntd_linhas(df)
 else:
     mostra_qntd_linhas(df)
     
-quantidade = df.groupby(['Class']).classe.count().sort_values()
-
 
 # Visualizações Gráficas
 st.title('Visualização Gráfica')
