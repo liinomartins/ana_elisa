@@ -4,12 +4,12 @@ import plotly.express as px
 
 df = pd.read_csv('https://www.openml.org/data/get_csv/1586225/php0iVrYT')
 df.rename(columns = {'V1':'Recency','V2':'Frequency','V3':'Monetary','V4':'Time','Class':'Target'}, inplace=True)
-st.title('Ana elisa teste da aplicacao')
-st.write('filtro e download do treco')
+st.title('Ana Elisa Braz - Avaliação 2 - Módulo 2')
+st.write('Base Filtrada')
 st.dataframe(df)
 target = list(df['Target'].unique())
 target.append('Todas')
-targets = st.selectbox('Selecione o Target', options = target)
+targets = st.selectbox('Selecione 1 para "o individuo não doou em 07/03/2007" ou 2 para para "o individuo doou em 07/03/2007", options = target)
 # Função que mostra a quantidade de linhas 
 def mostra_qntd_linhas(df):
     qntd_linhas = st.slider('Selecione a quantidade de linhas que deseja mostrar na tabela',min_value = 1, max_value = len(df), step =1)
