@@ -15,7 +15,7 @@ def mostra_qntd_linhas(df):
     st.write(df.head(qntd_linhas).style.format(subset = ['class'], formatter = "{:.2f}"))
 
 if coluna1 !='Todas':
-    df = df.query('class == @class')
+    df = df.query('Class == @class')
     mostra_qntd_linhas(df)
 else:
     mostra_qntd_linhas(df)
