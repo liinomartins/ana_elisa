@@ -7,8 +7,9 @@ df.rename(columns = {'V1':'Recency','V2':'Frequency','V3':'Monetary','V4':'Time'
 st.title('Ana Elisa Braz - Avaliação 2 - Módulo 2')
 st.write('Base Filtrada')
 st.dataframe(df)
+df.astype({"Target":"float64"})
 target = list(df['Target'].unique())
-df['Target'].astype(float)
+#df['Target'].astype(float)
 target.append('Todas')
 targets = st.selectbox('Selecione o Target', options = target)
 # Função que mostra a quantidade de linhas 
