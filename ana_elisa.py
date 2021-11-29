@@ -6,18 +6,18 @@ df = pd.read_csv('https://www.openml.org/data/get_csv/61/dataset_61_iris.arff')
 st.title('Ana Elisa Braz - Avaliação 2 - Módulo 2')
 st.write('Base Filtrada')
 st.dataframe(df)
-df.rename(columns = {'class':'Class'}, inplace=True)
-coluna1 = list(df['Class'].unique())
+#df.rename(columns = {'class':'Class'}, inplace=True)
+coluna1 = list(df['class'].unique())
 coluna1.append('Todas')
 colunas1 = st.selectbox('Selecione o class', options = coluna1)
 
 # Função que mostra a quantidade de linhas 
 def mostra_qntd_linhas(df):
     qntd_linhas = st.slider('Selecione a quantidade de linhas que deseja mostrar na tabela',min_value = 1, max_value = len(df), step =1)
-    st.write(df.head(qntd_linhas).style.format(subset = ['Class'], formatter = "{:.2f}"))
+    st.write(df.head(qntd_linhas).style.format(subset = ['class'], formatter = "{:.2f}"))
 
 if coluna1 !='Todas':
-    df = df.query('Class == @class')
+    df = df.query('class == @class')
     mostra_qntd_linhas(df)
 else:
     mostra_qntd_linhas(df)
@@ -26,8 +26,8 @@ else:
 # Visualizações Gráficas
 st.title('Visualização Gráfica')
 st.write(' ')
-quantidade = df.groupby(['Class']).Class.count().sort_values()
-coluna1 = df['Class'].unique()
+quantidade = df.groupby(['Class']).class.count().sort_values()
+coluna1 = df['class'].unique()
 
 fig = px.bar(x=quantidade, y = coluna1, orientation = 'h', title = 'Gráfico de quantidade de Class', labels = {'x':'Quantidade','y':'Class'})
 st.plotly_chart(fig)
