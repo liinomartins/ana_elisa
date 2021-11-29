@@ -29,14 +29,14 @@ st.write(' ')
 
 
 # Download da tabela filtrada
-st.title('Download da Tabela Filtrada')
+st.write('Download da Tabela Filtrada')
 def convert_df(df):
     return df.to_csv().encode('utf-8')   
 csv = convert_df(df)
 st.download_button(label = 'Download da base filtrada como CSV', data = csv, file_name = 'consulta.csv', mime = 'text/csv')
 
 # Download da tabela filtrada
-st.title('Download da Tabela Filtrada .json')
+st.write('Download da Tabela Filtrada .json')
 def convert_df(df):
     return df.to_json(orient = 'records')   
 json = convert_df(df)
