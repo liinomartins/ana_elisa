@@ -7,7 +7,7 @@ df.rename(columns = {'V1':'Recency','V2':'Frequency','V3':'Monetary','V4':'Time'
 st.title('Ana Elisa Braz - Avaliação 2 - Módulo 2')
 st.write('Base Filtrada')
 st.dataframe(df)
-df['Target'].astype(str)
+df['Target'].apply(str)
 target = list(df['Target'].unique())
 target.append('Todas')
 targets = st.selectbox('Selecione o Target', options = target)
@@ -39,6 +39,7 @@ def convert_df(df):
     return df.to_csv().encode('utf-8')   
 csv = convert_df(df)
 st.download_button(label = 'Download da base filtrada como CSV', data = csv, file_name = 'consulta.csv', mime = 'text/csv')
+st.write('  ')
 
 # Download da tabela filtrada
 st.write('Download da Tabela Filtrada .json')
