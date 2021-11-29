@@ -9,7 +9,7 @@ st.write('Base Filtrada')
 st.dataframe(df)
 target = list(df['Target'].unique())
 target.append('Todas')
-targets = st.selectbox('Selecione o Target', options = target)
+targets = st.selectbox('Selecione o Target', ['1.00','2.00'])
 # Função que mostra a quantidade de linhas 
 def mostra_qntd_linhas(df):
     qntd_linhas = st.slider('Selecione a quantidade de linhas que deseja mostrar na tabela',min_value = 1, max_value = len(df), step =1)
