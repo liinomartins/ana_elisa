@@ -7,14 +7,16 @@ st.title('Ana Elisa Braz - Avaliação 2 - Módulo 2')
 st.write('Base Filtrada')
 st.dataframe(df)
 df.rename(columns = {'class':'Class'}, inplace=True)
-classe = list(df['Class'].unique())
-classe.append('Todas')
-classe1 = st.selectbox('Selecione o class', options = classe)
 
 # Função que mostra a quantidade de linhas 
 def mostra_qntd_linhas(df):
     qntd_linhas = st.slider('Selecione a quantidade de linhas que deseja mostrar na tabela',min_value = 1, max_value = len(df), step =1)
     st.write(df.head(qntd_linhas).style.format(subset = ['Class'], formatter = "{:.2f}"))
+
+classe = list(df['Class'].unique())
+classe.append('Todas')
+classe1 = st.selectbox('Selecione o class', options = classe)
+
 
 if classe1 !='Todas':
     df = df.query('Class == @classe1')
