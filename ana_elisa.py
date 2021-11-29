@@ -29,7 +29,7 @@ quantidade = df.groupby(['Target']).Target.count().sort_values()
 target1 = df['Target'].unique()
 
 fig = px.bar(x=quantidade, y = target1, orientation = 'h', title = 'Nome do Gráfico', labels = {'x':'Quantidade','y':'Target'})
-st.pyplot_chart(fig)
+st.plotly_chart(fig)
 
 
 
