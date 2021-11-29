@@ -8,7 +8,7 @@ st.title('Ana Elisa Braz - Avaliação 2 - Módulo 2')
 st.write('Base Filtrada')
 st.dataframe(df)
 recency = list(df['Recency'].unique())
-recency.append('Todas')
+#recency.append('Todas')
 recencys = st.selectbox('Selecione o Target', options = recency)
 # Função que mostra a quantidade de linhas 
 def mostra_qntd_linhas(df):
