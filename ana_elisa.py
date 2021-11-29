@@ -7,9 +7,9 @@ st.title('Ana Elisa Braz - Avaliação 2 - Módulo 2')
 st.write('Base Filtrada')
 st.dataframe(df)
 df.rename(columns = {'class':'Class'}, inplace=True)
-clase = list(df['Class'].unique())
-clase.append('Todas')
-class1 = st.selectbox('Selecione o class', options = classe)
+classe = list(df['Class'].unique())
+classe.append('Todas')
+classe1 = st.selectbox('Selecione o class', options = classe)
 
 # Função que mostra a quantidade de linhas 
 def mostra_qntd_linhas(df):
@@ -21,17 +21,18 @@ if classe !='Todas':
     mostra_qntd_linhas(df)
 else:
     mostra_qntd_linhas(df)
+    
 quantidade = df.groupby(['Class']).classe.count().sort_values()
 
 
 # Visualizações Gráficas
 st.title('Visualização Gráfica')
 st.write(' ')
-coluna1 = df['Class'].unique()
+classe = df['Class'].unique()
 
 box_x = st.selectbox('Variáveis do Blox Plot', options = df.columns, index = df.columns.get_loc('sepallength'))
 box_cat = st.selectbox('Variáveis Categóricas', options = df.columns)
-box_fig = px.box(df, x = box_cat, y = box_x, title = 'Box Plot do ' + box_cat, template = 'plotly_white', category_orders = coluna1)
+box_fig = px.box(df, x = box_cat, y = box_x, title = 'Box Plot do ' + box_cat, template = 'plotly_white', category_orders = classe1)
 st.write(box_fig)
 
 
