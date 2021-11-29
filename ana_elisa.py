@@ -22,7 +22,7 @@ classe = df['Class'].unique()
 
 box_x = st.selectbox('Variáveis do Blox Plot', options = df.columns, index = df.columns.get_loc('sepallength'))
 box_cat = st.selectbox('Variáveis Categóricas', options = df.columns)
-box_fig = px.box(df, x = box_cat, y = box_x, title = 'Box Plot do ' + box_cat, template = 'plotly_white', category_orders = classe1)
+box_fig = px.box(df, x = box_cat, y = box_x, title = 'Box Plot do ' + box_cat, template = 'plotly_white', category_orders = classe)
 st.write(box_fig)
 
 
